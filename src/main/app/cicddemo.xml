@@ -9,6 +9,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
     <http:listener-config name="HTTP_Listener_Configuration" host="127.0.0.1" port="8585" doc:name="HTTP Listener Configuration"/>
     <flow name="cicddemoFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
-        <set-payload value="#[&quot;Sadik Ali&quot;]" doc:name="Set Payload"/>
+        <set-payload value="#[&quot;Welcome to our world !!&quot;]" doc:name="Set Payload"/>
     </flow>
 </mule>
