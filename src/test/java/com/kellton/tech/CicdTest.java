@@ -7,7 +7,7 @@ public class CicdTest  extends FunctionalTestCase {
 	
 	 @Test
 	    public void mavenFlowReturnsHelloMaven() throws Exception {
-	        runFlowAndExpect("cicddemoFlow", "Sadik Ali");
+	        runFlowAndExpect("cicddemoFlow", "Welcome to our world !!");
 	    }
 	    
 	    @Override
