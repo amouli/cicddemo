@@ -16,4 +16,13 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
         <flow-ref name="cicddemoFlow" doc:name="Flow-ref to cicddemoFlow"/>
         <munit:assert-on-equals expectedValue="#[&quot;Welcome to our world.&quot;]" actualValue="#[&quot;Welcome to our world.&quot;]" doc:name="Assert Equals"/>
     </munit:test>
+    <munit:test name="cicddemo-test-suite-cicddemoFlowTestNotTrue" description="Test">
+        <flow-ref name="cicddemoFlow" doc:name="Flow-ref to cicddemoFlow"/>
+        <munit:assert-not-same message="#[&quot;Sorry your are wrong!!.&quot;]" expectedValue="#[&quot;Welcome to your world.&quot;]" actualValue="#[&quot;Welcome to our world.&quot;]" doc:name="Assert Not Equals"/>
+    </munit:test>
+    <munit:test name="cicddemo-test-suite-catchFlyFlowTest" description="Test">
+        <munit:set payload="#[&quot;This is my place&quot;]" doc:name="Set Message"/>
+        <flow-ref name="catchFlyFlow" doc:name="Flow-ref to catchFlyFlow"/>
+        <munit:assert-on-equals message="#[&quot;Sorry you are wrong&quot;]" expectedValue="#[&quot;This is my place&quot;]" actualValue="#[&quot;This is my place&quot;]" doc:name="Assert Equals"/>
+    </munit:test>
 </mule>
