@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+    <munit:config name="munit" doc:name="MUnit configuration"/>
+    <spring:beans>
+        <spring:import resource="classpath:cicddemo.xml"/>
+    </spring:beans>
+    <munit:test name="cicddemo-test-suite-cicddemoFlow1Test" description="Test">
+        <munit:set payload="#[&quot;Hi Friends.&quot;]" doc:name="Set Message"/>
+        <flow-ref name="cicddemoFlow1" doc:name="Flow-ref to cicddemoFlow1"/>
+        <munit:assert-on-equals expectedValue="#[&quot;Hi Friends.Sadik Ali&quot;]" actualValue="#[payload]" doc:name="Assert Equals"/>
+    </munit:test>
+    <munit:test name="cicddemo-test-suite-cicddemoFlowTest" description="Test">
+        <flow-ref name="cicddemoFlow" doc:name="Flow-ref to cicddemoFlow"/>
+        <munit:assert-on-equals expectedValue="#[&quot;Welcome to our world.&quot;]" actualValue="#[&quot;Welcome to our world.&quot;]" doc:name="Assert Equals"/>
+    </munit:test>
+</mule>

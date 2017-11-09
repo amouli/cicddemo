@@ -8,7 +8,14 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
     <http:listener-config name="HTTP_Listener_Configuration" host="127.0.0.1" port="8585" doc:name="HTTP Listener Configuration"/>
     <flow name="cicddemoFlow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
-        <set-payload value="#[&quot;Welcome to our world !!&quot;]" doc:name="Set Payload"/>
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/First" doc:name="HTTP" allowedMethods="GET"/>
+        <set-payload value="#[&quot;Welcome to our world.&quot;]" doc:name="Set Payload"/>
+    </flow>
+    <flow name="cicddemoFlow1">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/Send" allowedMethods="POST" doc:name="HTTP"/>
+        <object-to-string-transformer doc:name="Object to String"/>
+        <enricher source="#[payload]" target="#[payload]" doc:name="Message Enricher">
+            <set-payload value="#[payload + &quot;Sadik Ali&quot; ]" doc:name="Set Payload"/>
+        </enricher>
     </flow>
 </mule>
